@@ -6,8 +6,8 @@
     <title>Test Web App</title>
 </head>
 <body>
-    <div id="box">
 
+    <div id="box">
     </div>
     <style>
         *{
@@ -30,7 +30,7 @@
         }
     </style>
     <script>
-        let url = "https://nine-lights-reply.loca.lt/api/products"
+        let url = "http://localhost:8080/api/products"
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -61,7 +61,7 @@
                     }
                     mainel.appendChild(prdDiv)
                 })
-            }).catch(e=>{throw new Error(e)})
+            }).catch(e=>{throw "devolaper woking on...!"})
     </script>
 </body>
 </html>
