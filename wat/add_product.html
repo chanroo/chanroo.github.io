@@ -69,7 +69,7 @@
             formData.append('imgfile', imageFile);
 
             try {
-                const response = await fetch('http://localhost:8080/api/products', {
+                const response = await fetch('https://rich-webs-laugh.loca.lt/api/products', {
                     method: 'POST',
                     body: formData
                 });
