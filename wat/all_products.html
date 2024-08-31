@@ -111,7 +111,15 @@
     
                     mainel.appendChild(prdDiv);
                 });
-            }).catch(e => { throw "developer working on...!" });
+            })
+            .catch(error => {
+            const mainel = document.getElementById('box');
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = "Unable to fetch products. Please try again later.";
+            errorMessage.style.color = 'red';
+            mainel.appendChild(errorMessage);
+            console.error('There was a problem with the fetch operation:', error);
+        });
     </script>
     
 </body>
