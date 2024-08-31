@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Web App</title>
+</head>
+<body>
+
+    <div id="box">
+    </div>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            flex-wrap: wrap;
+        }
+        .product {
+            border: solid 1px rgb(189, 189, 189);
+            padding: 20px;
+            border-radius: 21px;
+            font-family: sans-serif;
+            width: 250px;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <!-- <script>
+        let url = "http://localhost:8080/api/products";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const mainel = document.getElementById('box');
+                data.forEach((product) => {
+                    console.log(product);
+
+                    const prdDiv = document.createElement('div');
+                    prdDiv.className = "product";
+
+                    const prdImg = document.createElement('img');
+                    prdImg.src = `data:${product.imgType};base64,${product.imgData}`;
+
+                    const prdName = document.createElement('h3');
+                    prdName.textContent = "Name: " + product.name;
+
+                    const prdDesc = document.createElement('p');
+                    prdDesc.textContent = "Desc: " + product.descr;
+
+                    const prdBrd = document.createElement('p');
+                    prdBrd.textContent = "Brand: " + product.brand;
+
+                    const prdCtg = document.createElement('p');
+                    prdCtg.textContent = "Category: " + product.category;
+
+                    const prdPrc = document.createElement('p');
+                    prdPrc.textContent = "Price: " + product.price;
+
+                    const prdQty = document.createElement('p');
+                    prdQty.textContent = "Quantity: " + product.quantity;
+
+                    prdDiv.append(prdImg, prdName, prdDesc, prdBrd, prdCtg, prdPrc, prdQty);
+
+                    if (product.available) {
+                        prdDiv.style.borderColor = "#00ab47";
+                    } else {
+                        prdDiv.style.borderColor = "#ab0047";
+                    }
+                    mainel.appendChild(prdDiv);
+                });
+            }).catch(e => { console.error("Developer working on...!", e); });
+    </script> -->
+    <script>
+        let url = "http://localhost:8080/api/products";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const mainel = document.getElementById('box');
+                data.forEach((product) => {
+                    const prdDiv = document.createElement('div');
+                    prdDiv.className = "product";
+                    prdDiv.onclick = () => {
+                        window.location.href = `product_det.html?id=${product.id}`;
+                    };
+    
+                    const img = document.createElement('img');
+                    img.src = `data:${product.imgType};base64,${product.imgData}`;
+                    img.alt = product.name;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+    
+                    const prdName = document.createElement('h3');
+                    prdName.textContent = "Name: " + product.name;
+    
+                    prdDiv.append(img, prdName);
+    
+                    if (product.available) {
+                        prdDiv.style.borderColor = "#00ab47";
+                    } else {
+                        prdDiv.style.borderColor = "#ab0047";
+                    }
+    
+                    mainel.appendChild(prdDiv);
+                });
+            }).catch(e => { throw "developer working on...!" });
+    </script>
+    
+</body>
+</html>

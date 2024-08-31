@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Upload</title>
+</head>
+<body>
+    <h2>Upload Product</h2>
+    <form id="productForm" enctype="multipart/form-data">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="descr">Description:</label>
+        <input type="text" id="descr" name="descr" required><br><br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required><br><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required><br><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required><br><br>
+
+        <label for="releaseDate">Release Date:</label>
+        <input type="date" id="releaseDate" name="releaseDate" required><br><br>
+
+        <label for="available">Available:</label>
+        <input type="checkbox" id="available" name="available"><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+
+        <label for="image">Product Image:</label>
+        <input type="file" id="image" name="imgfile" accept="image/*" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseMessage"></div>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            // Create FormData object to hold multipart form data
+            const formData = new FormData();
+
+            // Create a product object to send as JSON
+            const product = {
+                name: document.getElementById('name').value,
+                descr: document.getElementById('descr').value,
+                brand: document.getElementById('brand').value,
+                category: document.getElementById('category').value,
+                price: document.getElementById('price').value,
+                releaseDate: document.getElementById('releaseDate').value,
+                available: document.getElementById('available').checked,
+                quantity: document.getElementById('quantity').value
+            };
+
+            // Append the JSON product object to the FormData as a string
+            formData.append('product', new Blob([JSON.stringify(product)], {
+                type: 'application/json'
+            }));
+
+            // Append the image file to the FormData
+            const imageFile = document.getElementById('image').files[0];
+            formData.append('imgfile', imageFile);
+
+            try {
+                const response = await fetch('http://localhost:8080/api/products', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                document.getElementById('responseMessage').innerText = `Success: ${JSON.stringify(result)}`;
+            } catch (error) {
+                document.getElementById('responseMessage').innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
