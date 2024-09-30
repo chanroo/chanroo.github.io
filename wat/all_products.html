@@ -80,7 +80,7 @@
             }).catch(e => { console.error("Developer working on...!", e); });
     </script> -->
     <script>
-        let url = "https://rich-webs-laugh.loca.lt/api/products";
+        let url = "http://localhost:8080/api/products";
         fetch(url)
             .then(response => response.json())
             .then(data => {

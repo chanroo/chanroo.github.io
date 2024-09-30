@@ -1,0 +1,97 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: white;
+    position: relative;
+}
+
+.navi{
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+nav{
+    background-color: black;
+    color: aquamarine;
+    /* position: sticky; */
+    padding: 5px;
+}
+
+ul{
+    margin-left: 60%;
+    color: bisque;
+}
+li, ul, table, tr{
+    display: inline;
+    /* padding-bottom: 5px; */
+}
+nav ul li:hover{
+    color: white;
+    padding-left: 20px;
+    cursor: pointer;
+
+}
+nav table tr td h1{
+    font-family: "Jacquarda Bastarda 9", serif;
+}
+
+.navi nav table tr td img{
+    margin-left: 5px;
+    border-radius: 100px;
+    width: 45px;
+    height: 45px;
+}
+
+input{
+    width: 60%;
+    padding: 15px;
+}
+input:hover{
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    border-style:solid ; 
+
+}
+
+.search{
+    padding: 50px;
+    text-align: center;
+
+}
+
+.products .box img{
+    width: 200px;
+    height: 200px;
+}
+
+.products .box{
+    width: 200px;
+    border-color:black ;
+    border-width: 2px;
+    border-style: solid;
+    display: inline-block;
+}
+
+.box:hover{
+    background-color: pink;
+    color: red;
+    padding: 10px;
+}
+
+.products{
+    text-align: center;
+}
+.about h1{
+    text-align: center;
+}
+
+.contact{
+    text-align: center;
+    background-color: black;
+    color: wheat;
+}
