@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random-num</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            height: 100vh;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #button {
+            font-size: 2em;
+            width: 25%;
+        }
+        
+        #lable {
+            height: 25%;
+            font-size: 5em;
+            color: aliceblue;
+            /* width: 25%; */
+            
+        }
+
+        #light {
+            display: flex;
+            list-style-type: none;
+            gap: 10px;
+        }
+
+        #light li {
+            height: 10px;
+            width: 10px;
+            /* border: 1px solid rgb(249, 249, 249); */
+            border-radius: 100px;
+        }
+        
+        #light .lht:nth-child() {
+            background-color: #a42b2b;
+        }
+    </style>
+
+    <ul id="light">
+        <li id="item1"></li>
+        <li id="item2"></li>
+        <li id="item3"></li>
+        <li id="item4"></li>
+        <li id="item5"></li>
+        <li id="item6"></li>
+    </ul>
+
+    <button id="button">roll</button>
+    <lable id="lable"></lable>
+
+    <script>
+        const button = document.getElementById("button");
+        const lable = document.getElementById("lable");
+        const min = 1;
+        const max = 7;
+
+        let val;
+        let val1 = 0;
+        // let num = 2;
+        // document.getElementById(`item${num}).style.backgroundColor = '#ff0000';
+        
+        button.onclick = function() {
+            
+            val =  Math.floor(Math.random() * (max - min) + min);
+            lable.textContent = val;
+
+            if(val > val1){
+
+                for(let i=1; i<=val; i++){
+                    document.getElementById(`item${i}`).style.backgroundColor = '#ff0000';
+                }
+                
+                val1 = val;
+            }else {
+                
+                for(let i=1; i<=val1; i++){
+                    document.getElementById(`item${i}`).style.backgroundColor = '#000000';
+                }
+
+                for(let i=1; i<=val; i++){
+                    document.getElementById(`item${i}`).style.backgroundColor = '#ff0000';
+                }
+            }
+            
+            
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conter</title>
+</head>
+<body>
+
+    <style>
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            box-sizing: border-box;
+        }
+        .box {
+           height: 400px;
+           width: 400px;
+           background-color: rgb(27, 4, 60);
+           border-radius: 35px;
+           box-shadow: 0px 0px 35px rgba(255, 251, 144, 0.584);
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           row-gap: 20%;
+           transition: 0.5s all ease-in-out;
+           animation: glow 3s infinite cubic-bezier(0.24, 0.01, 0.79, 1);      
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+        }
+
+        .box #display {
+            height: 50%;
+            width: 50%;
+            /* border: 1px solid #000; */
+            display: flex;
+            justify-content: center;
+            color: #fff;
+            align-items: center;
+            font-size: 7em;     
+            font-family: Arial, Helvetica, sans-serif; 
+        }
+
+        .box .inerbox {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        .box .inerbox button{
+            width: 100px;
+            font-size: 2em;
+            border: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border-radius: 10px;
+            background-color: beige;
+            cursor: pointer;
+            transition:background-color 0.25s;
+        }
+
+        .box .inerbox button:hover{
+            background-color: rgb(245, 245, 175);
+        }
+
+        .box .inerbox #decs:active {
+            color: rgb(238, 255, 152);
+            background-color: red;
+        }
+        .box .inerbox #rest:active {
+            color: rgb(238, 255, 152);
+            background-color: rgb(0, 208, 255);
+        }
+        .box .inerbox #incr:active {
+            color: rgb(238, 255, 152);
+            background-color: green;
+        }
+
+        @keyframes glow {
+            50%{box-shadow: 0px 0px 40px rgb(238, 234, 124)}
+        }
+
+    </style>
+    <div class="box">
+        <div id="display">Hi</div>
+        <div class="inerbox">
+            <button id="incr">add</button>
+            <button id="rest">rest</button>
+            <button id="decs">desc</button>
+        </div>
+    </div>
+
+    <script>
+
+        const addbtn = document.getElementById("incr");
+        const restbtn = document.getElementById("rest");
+        const decsbtn = document.getElementById("decs");
+        const disbtn = document.getElementById("display");
+        let count =0;
+
+        addbtn.onclick = function(){
+            count++;
+            disbtn.textContent = count;
+            if(count<0) disbtn.style.color = "#ff0000";
+            if(count>0) disbtn.style.color = "#00ff00";
+        }
+
+        decsbtn.onclick = function(){
+            count--;
+            if(count<0) disbtn.style.color = "#ff0000";
+            if(count>0) disbtn.style.color = "#00ff00";
+            disbtn.textContent = count;
+        }
+        
+        restbtn.onclick = function(){
+            count = 0;
+            if(count<0) disbtn.style.color = "#ff0000";
+            if(count>0) disbtn.style.color = "#00ff00";
+            disbtn.textContent = count;
+        }
+
+
+    </script>
+</body>
+</html>

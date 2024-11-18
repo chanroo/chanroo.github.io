@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dice_roll</title>
+</head>
+<body>
+
+    <style>
+        #container{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Arial, Helvetica, sans-serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        #inputint{
+            /* height: 30px; */
+            font-size: 2rem;
+            border: 2px solid black;
+            border-radius: 5px;
+            color: red;
+            /* width: auto; */
+        }
+
+        .btnsub{
+            font-size: 2rem;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            background-color: rgba(0, 128, 0, 0.683);
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btnsub:hover{
+            background-color: rgb(0, 128, 0);
+        }
+
+        .btnsub:active{
+            background-color: rgba(2, 74, 26, 0.46);
+        }
+
+        #displayresult{
+            margin: 5px;
+        }
+
+        #displayimg img{
+            width: 100px;
+            margin: 5px;
+            border-radius: 10%;
+            transition: 0.5s all ease-in-out;
+        }
+
+        @media screen and (max-width:600px) {
+            #inputint{
+            font-size: 2rem;
+            border: 2px solid black;
+            border-radius: 5px;
+            color: red;
+            width: 250px;
+        }
+
+        }
+    </style>
+
+    <div id="container">
+        <h2>Dice roll game</h2>
+        <label for="input"># of dice</label>
+        <input type="number" name="input" id="inputint" value="1" min="1">
+        <button class="btnsub" type="submit" onclick="diceRoll()">roll dice</button>
+        <div id="displayresult"></div>
+        <div id="displayimg"></div>
+    </div>
+
+    <script>
+        function diceRoll(){
+            const inputint = document.getElementById("inputint").value;
+            const displayresult = document.getElementById("displayresult");
+            const displayimg = document.getElementById("displayimg");
+
+            const side = [];
+            const sideimg = [];
+
+
+            for(let i = 0; i< inputint; i++){
+                const num = Math.floor(Math.random()*6) + 1;
+                console.log(side.push(num));
+
+                console.log(sideimg.push(`<img src="imgs/${num}.png" alt="img">`));
+
+            }
+            console.log(side);
+            displayresult.textContent = `Dice: ${side.join(', ')}`;
+            displayimg.innerHTML = sideimg.join("");
+
+        }
+    </script>
+</body>
+</html>

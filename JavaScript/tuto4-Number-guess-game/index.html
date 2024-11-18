@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number-guess-game</title>
+</head>
+<body>
+    <script>
+        const minNum = 1;
+        const maxNum = 10;
+        
+        let attempts = 0;
+        let guess;
+        let running  = true;
+        
+        while(running){
+            const ans = Math.floor(Math.random()*(maxNum - minNum + 1)+minNum);
+            guess = window.prompt(`enter the number btw ${minNum}- ${maxNum}`);
+            guess = Number (guess);
+            
+            if(isNaN(guess)){
+                window.alert("wrong value. please entr the crt value");
+            }else if(guess < minNum || guess > maxNum){
+                window.alert("wrong value. please entr the crt value");
+            }else{
+                attempts++;
+                if(guess < ans){
+                    window.alert("too low!");
+                }else if(guess > ans){
+                    window.alert("too hige!");
+                }else{
+                    window.alert(`congrates ! you toke ${attempts} and the answer is ${ans}`);
+                    running = false;
+                }
+            }
+
+        }
+    
+    
+    </script>
+</body>
+</html>

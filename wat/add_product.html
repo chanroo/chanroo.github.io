@@ -6,37 +6,78 @@
     <title>Product Upload</title>
 </head>
 <body>
-    <h2>Upload Product</h2>
-    <form id="productForm" enctype="multipart/form-data">
-        <label for="name">Product Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <style>
+        .formx{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+        }
 
-        <label for="descr">Description:</label>
-        <input type="text" id="descr" name="descr" required><br><br>
+        form{
+            display: flex;
+            width: 700px ;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+        }
 
-        <label for="brand">Brand:</label>
-        <input type="text" id="brand" name="brand" required><br><br>
+    </style>
+    <div class="formx">
+        <h2>Upload Product</h2>
 
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category" required><br><br>
+        <form id="productForm" enctype="multipart/form-data">
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" required><br><br>
+            <div class="field">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name"required><br><br>
+            </div>
+                
+            <div class="field">
+                <label for="descr">Description:</label>
+                <input type="text" id="descr" name="descr" required><br><br>
+            </div>
 
-        <label for="releaseDate">Release Date:</label>
-        <input type="date" id="releaseDate" name="releaseDate" required><br><br>
+            <div class="field">
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand" required><br><br>
+            </div>
 
-        <label for="available">Available:</label>
-        <input type="checkbox" id="available" name="available"><br><br>
+            <div class="field">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required><br><br>
+            </div>
 
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" required><br><br>
+            <div class="field">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required><br><br>
+            </div>
 
-        <label for="image">Product Image:</label>
-        <input type="file" id="image" name="imgfile" accept="image/*" required><br><br>
 
-        <button type="submit">Submit</button>
-    </form>
+            <div class="field">
+                <label for="releaseDate">Release Date:</label>
+                <input type="date" id="releaseDate" name="releaseDate" required><br><br>
+            </div>
+
+            <div class="field">
+                <label for="available">Available:</label>
+                <input type="checkbox" id="available" name="available"><br><br>
+            </div>
+
+            <div class="field">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" required><br><br>
+            </div>
+
+            <div class="field">
+                <label for="image">Product Image:</label>
+                <input type="file" id="image" name="imgfile" accept="image/*" required><br><br>
+            </div>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
     <div id="responseMessage"></div>
 
